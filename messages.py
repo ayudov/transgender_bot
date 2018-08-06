@@ -1,0 +1,6 @@
+HELLO_MESSAGE = 'Добро пожаловать!\nКак к тебе обращаться?'
+HELLO_AGAIN_MESSAGE = 'Снова привет!)'
+NAME_UPDATED = 'Имя добавлено'
+SEX_ENTER = 'Пожалуйста, укажи свой пол'
+SUCCESSFULLY_REGISTERED = 'Ты успешно зарегестрирован в БД'
+KEYBOARD_USAGE_ASKING = 'Пожалуйста, пользуйся кнопками'
