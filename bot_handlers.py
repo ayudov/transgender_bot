@@ -4,7 +4,6 @@ from buttons import *
 from db import users_db
 from telebot import types
 from datetime import datetime, timezone
-#import datetime
 import pymongo
 
 
@@ -23,12 +22,6 @@ def repeat_all_messages(message):
 	if users_db.find_one({'user_id' : message.from_user.id, 'Name' : ''}):
 		users_db.update_one({'user_id' : message.from_user.id}, {"$set" : {'Name' : message.text}}) #Обновляем имя
 		bot.send_message(message.chat.id, NAME_UPDATED)
-		#keyboard_choose_sex = types.ReplyKeyboardMarkup(True, True)
-		#keyboard = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
-		#button_male = types.KeyboardButton(text = 'M')
-		#button_female = types.KeyboardButton(text = 'Ж')
-		#button_other = types.KeyboardButton(text = 'Другое')
-		#keyboard_choose_sex.add(button_male, button_female, button_other)
 		bot.send_message(message.chat.id, "Пожалуйста, " + users_db.find_one({'user_id' : message.from_user.id})['Name'] + ", выбери пол:", reply_markup=keyboard_choose_sex)
 	elif users_db.find_one({'user_id' : message.from_user.id, 'Sex' : ''}) or users_db.find_one({'user_id' : message.from_user.id, 'Sex' : 'Другое'}):
 		users_db.update_one({'user_id' : message.from_user.id}, {"$set" : {'Sex' : message.text}})  	#Обновляем пол
@@ -37,7 +30,6 @@ def repeat_all_messages(message):
 		else:
 			bot.send_message(message.chat.id, 'Твой пол "' +  users_db.find_one({'user_id' : message.from_user.id})['Sex'] + '"')
 			if not users_db.find_one({'user_id' : message.from_user.id, 'Name' : '', 'Sex' : ''}) or users_db.find_one({'user_id' : message.from_user.id, 'Name' : '', 'Sex' : 'Другое'}):
-				#keyboard_continue_conversation.add(button_hello, button_change)
 				bot.send_message(message.chat.id, SUCCESSFULLY_REGISTERED, reply_markup=keyboard_continue_conversation)	
 	
 		
@@ -58,7 +50,6 @@ def repeat_all_messages(message):
 		users_db.delete_one({'user_id' : message.from_user.id})
 		bot.send_message(message.chat.id, "Пока, жюк:(", reply_markup = keyboard_start_conversation)
 	elif message.text == 'Сменить пол':
-		#keyboard_choose_sex.add(button_male, button_female, button_other)
 		bot.send_message(message.chat.id, "Пожалуйста, " + users_db.find_one({'user_id' : message.from_user.id})['Name'] + ", выбери пол:", reply_markup=keyboard_choose_sex)
 		users_db.update_one({'user_id' : message.from_user.id}, {"$set" : {'Sex' : 'Другое'}}) 
 	else:
