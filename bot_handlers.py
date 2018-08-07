@@ -11,7 +11,7 @@ import pymongo
 # Выполняется, когда пользователь нажимает на start
 def send_welcome(message):
 	if not users_db.find_one({'user_id': message.from_user.id}):
-		users_db.insert_one({'user_id' : message.from_user.id, 'Name' : '', 'Sex' : ''})		#Создаем новую запись
+		users_db.insert_one({'user_id' : message.from_user.id, 'Name' : '', 'Sex' : '', 'editing' : ''})		#Создаем новую запись
 		bot.send_message(message.chat.id, HELLO_MESSAGE)
 	else:
 		bot.send_message(message.chat.id, HELLO_AGAIN_MESSAGE)
