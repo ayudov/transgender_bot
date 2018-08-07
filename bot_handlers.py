@@ -35,8 +35,8 @@ def repeat_all_messages(message):
 		
 	
 	elif message.text == 'Поздороваться':
-		if  users_db.find_one({'user_id' : message.from_user.id, 'Sex' : 'Ж'}):friend_recourse = 'моя подруга,'
-		elif  users_db.find_one({'user_id' : message.from_user.id, 'Sex' : 'М'}):friend_recourse = 'мой друг,'
+		if users_db.find_one({'user_id' : message.from_user.id, 'Sex' : 'Ж'}):friend_recourse = 'моя подруга,'
+		elif users_db.find_one({'user_id' : message.from_user.id, 'Sex' : 'М'}):friend_recourse = 'мой друг,'
 		else: friend_recourse = 'мой нестандартный друг,'
 		if datetime.now().hour >= 0 and datetime.now().hour < 6:
 			bot.send_message(message.chat.id, 'Доброй ночи, ' + friend_recourse + " " + users_db.find_one({'user_id' : message.from_user.id})['Name'], reply_markup=keyboard_continue_conversation)

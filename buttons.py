@@ -2,7 +2,7 @@ from telebot import types
 
 #Кнопки для выбора пола
 keyboard_choose_sex = types.ReplyKeyboardMarkup(True, True)
-button_male = types.KeyboardButton(text = 'M')
+button_male = types.KeyboardButton(text = 'М')
 button_female = types.KeyboardButton(text = 'Ж')
 button_other = types.KeyboardButton(text = 'Другое')
 keyboard_choose_sex.add(button_male, button_female, button_other)
