@@ -83,8 +83,7 @@ def repeat_all_messages(message):
 		users_db.update_one({'user_id': message.from_user.id},
 							{"$set": {'Name': '', 'menu item': ''}}) 
 # Неверный ввод
-	elif re.search('\D', message.text):
-		bot.send_message(message.chat.id, KEYBOARD_USAGE_ASKING)																			
+	else: bot.send_message(message.chat.id, KEYBOARD_USAGE_ASKING)																			
 
 @bot.message_handler(content_types=['sticker', 'user', 'chat', 'photo', 'audio', 'document', 'video', 'voice', 'contact', 'location', 'venue', 'userprofilephotos', 'file'])
 def answer_sticker(message):
