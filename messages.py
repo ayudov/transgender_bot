@@ -32,10 +32,21 @@ OTHER_B = 'Другой'
 
 HELLO_B = 'Поздороваться'
 SETTINGS_B = 'Настройки'
+CAT_B = 'Котик'
 
 CHANGE_SEX_B = 'Сменить пол'
 CHANGE_NAME_B = 'Сменить имя'
+BACK_B = 'Назад'
 
 # Состояния диалога
 CONTINUE_CONVERSATION = 'continue conversation'
 CHOOSE_OPTION = 'choose option'
+ENTER_SEX = 'enter sex'
+ENTER_NAME = 'enter name'
+
+#Названия колонок
+USER_ID = 'user id'
+NAME = 'Name'
+SEX = 'Sex'
+STATE = 'state'
+REG_TIME = 'reg time by UTC'
