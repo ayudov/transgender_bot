@@ -24,4 +24,8 @@ keyboard_choose_option.add(button_change_name, button_change_sex)
 #  Кнопки для возврата назад
 keyboard_back = types.ReplyKeyboardMarkup(resize_keyboard=True)
 button_back = types.KeyboardButton(text=BACK_B)
+<<<<<<< HEAD
 keyboard_back.add(button_back)
+=======
+keyboard_back.add(button_back)
+>>>>>>> 1de91b397b408976f5eb59f3aeca23e96c5be311
