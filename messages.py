@@ -44,7 +44,7 @@ CHOOSE_OPTION = 'choose option'
 ENTER_SEX = 'enter sex'
 ENTER_NAME = 'enter name'
 
-#Названия колонок
+# Названия колонок
 USER_ID = 'user id'
 NAME = 'Name'
 SEX = 'Sex'
