@@ -71,7 +71,8 @@ def repeat_all_messages(message):
             bot.send_message(message.chat.id, time_recourse + my_friend_dict[user[SEX]] + user[NAME],
                              reply_markup=keyboard_continue_conversation)
         elif message.text == CAT_B:
-            bot.send_photo(message.chat.id, photo=url)
+            #url=web()
+            bot.send_photo(message.chat.id, photo=web())
         else:
             bot.send_message(message.chat.id, KEYBOARD_USAGE_ASKING)
 

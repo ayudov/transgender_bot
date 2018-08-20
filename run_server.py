@@ -7,10 +7,13 @@ from telebot import types
 app = Flask(__name__)
 
 
+NGROK = input('Enter ngrok URL: ')
+
+
 @app.route('/', methods=["GET"])
 def index():
     bot.remove_webhook()
-    bot.set_webhook(url="https://25207845.ngrok.io/{}".format(TOKEN))
+    bot.set_webhook(url=NGROK+"/{}".format(TOKEN))
     return "Hey, I'm working!)", 200
 
 
