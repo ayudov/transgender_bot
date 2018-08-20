@@ -50,3 +50,6 @@ NAME = 'Name'
 SEX = 'Sex'
 STATE = 'state'
 REG_TIME = 'reg time by UTC'
+
+# Сайт работает исправно
+WORKING_WELL = "Hey, I'm working!)"

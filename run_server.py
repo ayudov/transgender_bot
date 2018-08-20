@@ -2,19 +2,17 @@ from flask import Flask, request
 from config import *
 from bot_handlers import bot
 from telebot import types
-
+from constants import NGROK
+from messages import WORKING_WELL
 
 app = Flask(__name__)
-
-
-NGROK = input('Enter ngrok URL: ')
 
 
 @app.route('/', methods=["GET"])
 def index():
     bot.remove_webhook()
-    bot.set_webhook(url=NGROK+"/{}".format(TOKEN))
-    return "Hey, I'm working!)", 200
+    bot.set_webhook(url=NGROK+'/{}'.format(TOKEN))
+    return WORKING_WELL, 200
 
 
 @app.route('/' + TOKEN, methods=['POST'])

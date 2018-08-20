@@ -1,8 +1,6 @@
 from datetime import datetime
-# import re
 
 from browse import *
-
 from bot import bot
 from buttons import *
 from db import users_db
@@ -71,7 +69,6 @@ def repeat_all_messages(message):
             bot.send_message(message.chat.id, time_recourse + my_friend_dict[user[SEX]] + user[NAME],
                              reply_markup=keyboard_continue_conversation)
         elif message.text == CAT_B:
-            #url=web()
             bot.send_photo(message.chat.id, photo=web())
         else:
             bot.send_message(message.chat.id, KEYBOARD_USAGE_ASKING)
@@ -99,7 +96,5 @@ def answer_sticker(message):
     bot.send_message(message.chat.id, TEXT_USAGE_ASKING)
 
 
-'''
 if __name__ == '__main__':
     bot.polling(none_stop=True)
-'''
