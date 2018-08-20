@@ -48,8 +48,8 @@ def repeat_all_messages(message):
             bot.send_message(message.chat.id,
                              SEX_UPDATED + '\n' + YOUR_SEX.format(users_db.find_one({USER_ID: user[USER_ID]})[SEX]),
                              reply_markup=keyboard_continue_conversation)
-        elif re.search('[a-zA-Z\d]', message.text):
-            bot.send_message(message.chat.id, CHAR_ASKING)
+        # elif re.search('[a-zA-Z\d]', message.text):
+        #    bot.send_message(message.chat.id, CHAR_ASKING)
         else:
             bot.send_message(message.chat.id, KEYBOARD_USAGE_ASKING)
 
