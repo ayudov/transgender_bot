@@ -1,8 +1,7 @@
 from datetime import datetime
-import re
+# import re
 
-import urllib.request
-from random import randint
+from browse import *
 
 from bot import bot
 from buttons import *
@@ -25,7 +24,6 @@ def send_welcome(message):
 @bot.message_handler(content_types=["text"])
 def repeat_all_messages(message):
     # Получаем информацию о пользователе
-    global time_recourse
     user = users_db.find_one({USER_ID: message.from_user.id})
 
     # Ввод имени
@@ -61,7 +59,7 @@ def repeat_all_messages(message):
             bot.send_message(message.chat.id, CHOOSE_OPTION_ASKING, reply_markup=keyboard_choose_option)
             users_db.update_one({USER_ID: user[USER_ID]}, {"$set": {STATE: CHOOSE_OPTION}})
         elif message.text == HELLO_B:
-            MY_FRIEND_DICT = {MALE_B: MY_FRIEND_M, FEMALE_B: MY_FRIEND_F, OTHER_B: MY_FRIEND_NA}
+            my_friend_dict = {MALE_B: MY_FRIEND_M, FEMALE_B: MY_FRIEND_F, OTHER_B: MY_FRIEND_NA}
             if 0 <= datetime.now().hour < 6:
                 time_recourse = GOOD_NIGHT
             elif 6 <= datetime.now().hour < 12:
@@ -70,25 +68,9 @@ def repeat_all_messages(message):
                 time_recourse = GOOD_DAY
             elif 16 <= datetime.now().hour < 24:
                 time_recourse = GOOD_EVENING
-            bot.send_message(message.chat.id, time_recourse + MY_FRIEND_DICT[user[SEX]] + user[NAME],
+            bot.send_message(message.chat.id, time_recourse + my_friend_dict[user[SEX]] + user[NAME],
                              reply_markup=keyboard_continue_conversation)
         elif message.text == CAT_B:
-            site = 'https://www.google.com/search?tbm=isch&q=cat'
-            hdr = {
-                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) '
-                              'Chrome/23.0.1271.64 Safari/537.11',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-                'Accept-Encoding': 'none',
-                'Accept-Language': 'en-US,en;q=0.8',
-                'Connection': 'keep-alive'}
-            req = urllib.request.Request(site, headers=hdr)
-            page = urllib.request.urlopen(req)
-            html = page.read()
-            pat = re.compile(rb'<img [^>]*src="([^"]+)')
-            img = pat.findall(html)
-            # content = page.read()
-            url = img[randint(0, 70)].decode("utf-8")
             bot.send_photo(message.chat.id, photo=url)
         else:
             bot.send_message(message.chat.id, KEYBOARD_USAGE_ASKING)
@@ -116,5 +98,7 @@ def answer_sticker(message):
     bot.send_message(message.chat.id, TEXT_USAGE_ASKING)
 
 
+'''
 if __name__ == '__main__':
     bot.polling(none_stop=True)
+'''
